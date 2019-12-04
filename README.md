@@ -1,37 +1,56 @@
-## Welcome to GitHub Pages
+# Practica Docker
 
-You can use the [editor on GitHub](https://github.com/juanantoniogisbert/Docker1.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+DOCKER se refiere a varias cosas. Esto incluye un proyecto de la comunidad open source; las herramientas del proyecto open source; Docker Inc., la empresa que es la principal promotora de ese proyecto; y las herramientas que la empresa admite formalmente. El hecho de que las tecnologías y la empresa compartan el mismo nombre puede ser confuso.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+A continuación, le presentamos una breve explicación:
 
-### Markdown
+- "Docker", el software de TI, es una tecnología de creación de contenedores que permite la creación y el uso de contenedores de Linux®.
+- La comunidad open source Docker trabaja para mejorar estas tecnologías a fin de beneficiar a todos los usuarios de forma gratuita.
+- La empresa, Docker Inc., desarrolla el trabajo de la comunidad Docker, lo hace más seguro y comparte estos avances con el resto de la comunidad. También respalda las tecnologías mejoradas y reforzadas para los clientes empresariales.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Con DOCKER, puede usar los contenedores como máquinas virtuales extremadamente livianas y modulares. Además, obtiene flexibilidad con estos contenedores: puede crearlos, implementarlos, copiarlos y moverlos de un entorno a otro, lo cual le permite optimizar sus aplicaciones para la nube.
+
+### Paso 1 (Un contenedor con una imagen de MYSQL con las siguientes características)
+
+1. Accesible a través del puerto 3306
+
+2. Debe disponer de las siguientes variables de entorno
+
+    - MYSQL_ROOT_PASSWORD: 12345678
+    - MYSQL_DATABASE: wordpress
+    - MYSQL_USER: wordpress
+    - MYSQL_PASSWORD: wordpress
+
+3. Acceso a la red con nombre my_net
+
+4. Debe disponer de un named data volumen denominado vol_mysql asociado al path /var/lib/mysql del contenedor
+
+### Paso 2 (Un contenedor con una imagen de Wordpress con las siguientes características)
+
+1. Accesible a través del puerto 80
+
+2. Debe disponer de las siguientes variables de entorno
+
+3. Acceso a la red con nombre my_net
+
+4. Debe disponer de un named data volumen denominado vol_wordpress asociado al
+path /var/www/html del contenedor
+
+
+### Paso 3 (Crear, por medio de un dockerfile, una imagen basada en una de Ubuntu en la
+que)
+
+1. Se intale un servidor apache
+
+2. Se copie el fichero de configuración del sitio principal desde el contexto de docker
+(directorio donde se encuentra el dockerfile). En dicho fichero de configuración se
+establecerá una página de inicio (index.html) y otra de error (404.html) que se
+obtendrán también desde el contexto de docker.
+
+3. Al arrancar esta imagen en un contenedor se debe configurar un volumen que permita
+acceder a los logs de apache desde el host origen.
+
 
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/juanantoniogisbert/Docker1.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
