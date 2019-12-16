@@ -93,3 +93,5 @@ obtendrán también desde el contexto de docker.
 
 3. Al arrancar esta imagen en un contenedor se debe configurar un volumen que permita
 acceder a los logs de apache desde el host origen.
+
+![Alt text](images/cap10.png?raw=true "Title")
